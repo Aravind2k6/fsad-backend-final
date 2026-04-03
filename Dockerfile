@@ -21,5 +21,5 @@ COPY --from=build /app/target/student-feedback-backend-1.0.0.jar app.jar
 # Expose port (Render sets PORT env variable, defaulting to 8080 if not set, Spring Boot uses server.port)
 EXPOSE 8080
 
-# Run the app dynamically binding the port Render gives us, or defaulting to 8080
-ENTRYPOINT ["sh", "-c", "java -Dserver.port=${PORT:-8080} -jar app.jar"]
+# Run the app dynamically binding the port Render gives us, with memory limits for the 512MB RAM available
+ENTRYPOINT ["sh", "-c", "java -Xmx300m -Xms300m -Dserver.port=${PORT:-8080} -jar app.jar"]
