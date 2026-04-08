@@ -22,7 +22,12 @@ public class SecurityConfig {
             .csrf(AbstractHttpConfigurer::disable)
             // Allow all API endpoints (authentication handled at application level)
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/**").permitAll()
+                .requestMatchers(
+                    "/api/**",
+                    "/v3/api-docs/**",
+                    "/swagger-ui/**",
+                    "/swagger-ui.html"
+                ).permitAll()
                 .anyRequest().authenticated()
             );
         return http.build();
