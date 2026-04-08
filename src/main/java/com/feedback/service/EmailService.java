@@ -63,9 +63,10 @@ public class EmailService {
     public int sendFormPublishedEmail(List<String> recipients, FeedbackForm form) {
         String subject = "Feedback Form Launched: " + defaultValue(form.getTitle(), "Student Feedback");
         String body = """
-                A new feedback form has been launched by the admin.
+                A new feedback form has been launched.
 
                 Title: %s
+                Course/Target: %s
                 Deadline: %s
                 Category: %s
 
@@ -73,6 +74,7 @@ public class EmailService {
                 %s
                 """.formatted(
                 defaultValue(form.getTitle(), "Student Feedback"),
+                defaultValue(form.getTarget(), "General"),
                 defaultValue(form.getDeadline(), "Not specified"),
                 defaultValue(form.getType(), "General"),
                 normalizeBaseUrl(frontendBaseUrl));
@@ -89,6 +91,7 @@ public class EmailService {
                 This is a reminder to submit your feedback form before the deadline.
 
                 Title: %s
+                Course/Target: %s
                 Deadline: %s
                 %s
 
@@ -96,6 +99,7 @@ public class EmailService {
                 %s
                 """.formatted(
                 defaultValue(form.getTitle(), "Student Feedback"),
+                defaultValue(form.getTarget(), "General"),
                 defaultValue(form.getDeadline(), "Not specified"),
                 deadlineMessage,
                 normalizeBaseUrl(frontendBaseUrl));
