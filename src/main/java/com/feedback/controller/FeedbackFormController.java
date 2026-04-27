@@ -35,6 +35,12 @@ public class FeedbackFormController {
         return formService.getPublishedForms();
     }
 
+    @GetMapping("/active")
+    @Operation(summary = "Get active forms", description = "Alias for published feedback forms used by student-facing clients.")
+    public List<FeedbackForm> getActiveForms() {
+        return formService.getPublishedForms();
+    }
+
     @PostMapping
     @Operation(summary = "Create a new form", description = "Creates a new feedback form with specific courses and instructors.")
     public FeedbackForm createForm(@Valid @RequestBody FormCreateRequest request) {
