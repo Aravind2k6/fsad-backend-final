@@ -1,0 +1,6 @@
+.git
+.mvn
+.m2repo
+target
+Dockerfile.backup
+*.log
