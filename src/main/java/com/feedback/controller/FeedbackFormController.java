@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/forms")
 @Tag(name = "Feedback Forms", description = "Endpoints for managing feedback forms")
 public class FeedbackFormController {
